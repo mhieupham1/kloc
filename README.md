@@ -45,6 +45,12 @@ git push --tags
 chmod +x compare_commit_lines.sh
 ```
 
+**View all available feature tags:**
+```bash
+git tag -l "end-*"  # List all tags starting with "end-"
+git tag             # List all tags
+```
+
 **Important:** Ensure your working directory is clean (no uncommitted changes) before running the script, as it switches between commits:
 ```bash
 git status  # Check for uncommitted changes
@@ -105,6 +111,9 @@ git push origin end-payment
 
 Compare KLOC between the two features:
 ```bash
+# View available tags first
+git tag -l "end-*"
+
 # Ensure working directory is clean first
 git status
 chmod +x compare_commit_lines.sh  # If not already executable
