@@ -40,6 +40,17 @@ git push --tags
 
 ### 2. Compare KLOC Between Two Features
 
+**Before first use, make the script executable:**
+```bash
+chmod +x compare_commit_lines.sh
+```
+
+**Important:** Ensure your working directory is clean (no uncommitted changes) before running the script, as it switches between commits:
+```bash
+git status  # Check for uncommitted changes
+git stash   # If you have uncommitted changes, stash them
+```
+
 Use your Bash script `compare_commit_lines.sh` to compare the total lines of code between any two tags:
 
 ```bash
@@ -56,6 +67,7 @@ Use your Bash script `compare_commit_lines.sh` to compare the total lines of cod
 ### 4. Notes & Best Practices
 
 - Always tag at the **end commit** of each feature, not at the start.
+- **Keep your working directory clean** before running the comparison script, as it switches between commits frequently.
 - If you forget to tag, use `git log` to find the correct commit and tag it retroactively:
   ```bash
   git tag end-feature-name <commit_sha>
@@ -93,6 +105,9 @@ git push origin end-payment
 
 Compare KLOC between the two features:
 ```bash
+# Ensure working directory is clean first
+git status
+chmod +x compare_commit_lines.sh  # If not already executable
 ./compare_commit_lines.sh . end-login end-payment
 ```
 
